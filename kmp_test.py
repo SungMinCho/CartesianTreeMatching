@@ -25,6 +25,8 @@ def test_single_correctness(text, pattern):
     naive_matches = list(naive_match(text, pattern))
     kmp_matches = list(kmp_match(text, pattern))
     assert naive_matches == kmp_matches, '{} != {}'.format(naive_matches, kmp_matches)
+    print('match correct')
+    print('matches', kmp_matches)
     # print('{} in {} : {}'.format(pattern, text, naive_matches))
 
 
@@ -60,4 +62,11 @@ def test_time():
 
 if __name__ == "__main__":
     # test_correctness()
-    test_time()
+    # test_time()
+    random.seed(2)
+    n, m = 50, 5
+    text = [None] + [random.randint(1, 10) for _ in range(n)]
+    pattern = [None] + [random.randint(1, 10) for _ in range(m)]
+    print('text', text)
+    print('pattern', pattern)
+    test_single_correctness(text, pattern)
